@@ -5,10 +5,12 @@ module Mongoid::History
     end
 
     def controller=(value)
+      $stderr.puts "HIIHIHIHIHIHIHIHIHIHIHIHIHIHI"
       Thread.current[:mongoid_history_sweeper_controller] = value
     end
 
     def self.observed_classes
+      $stderr.puts "HIIHIHIHIHIHIHIHIHIHIHIHIHIHI"
       [Mongoid::History.tracker_class]
     end
 
@@ -30,6 +32,7 @@ module Mongoid::History
     end
 
     def before_create(track)
+      $stderr.puts "HIIHIHIHIHIHIHIHIHIHIHIHIHIHI"
       modifier_field = track.trackable.history_trackable_options[:modifier_field]
       modifier = track.trackable.send modifier_field
       track.modifier = current_user unless modifier
